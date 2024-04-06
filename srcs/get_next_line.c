@@ -6,51 +6,33 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:50:49 by tviejo            #+#    #+#             */
-/*   Updated: 2024/04/05 23:21:16 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/04/06 11:39:35 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	get_first_line(char *buffer)
+char	*get_next_line(int fd)
 {
-	int	i;
-
-	i = 0;
-	while (buffer[i] != '\n' && buffer[i] != '\0')
-		i++;
-	if (buffer[i] == '\n')
-		return (i + 1);
-	else
-		return (i);
-}
-
-char    *get_next_line(int fd)
-{
-	static char    buffer[BUFFER_SIZE] = "\0";
-	char	*newbuffer;
-	char	*output;
-	char	nbbyte;
+	static char	buffer[BUFFER_SIZE] = "\0";
+	char		*tempbuffer;
+	char		*output;
+	char		nbbyte;
 
 	if (buffer[0] == '\0')
-	{
-//		printf("read");
 		if (read(fd, buffer, BUFFER_SIZE) <= 0)
 			return (NULL);
-	}
 	nbbyte = get_first_line(buffer);
-	output = malloc((nbbyte + 1) * sizeof(char));
+	output = malloc((nbbyte) * sizeof(char));
 	if (output == NULL)
 		return (NULL);
-	output = ft_strncpy(output, buffer, nbbyte);
-//	printf("\ntest0: %s\n", output);
-	newbuffer = ft_remove_returned(buffer, nbbyte);
-//	printf("\ntest1: %s\n", newbuffer);
-	ft_strncpy(buffer, newbuffer, BUFFER_SIZE);
-	free(newbuffer);
+	ft_strncpy(output, buffer, nbbyte, nbbyte + 1);
+	tempbuffer = ft_remove_returned(buffer, nbbyte);
+	ft_strncpy(buffer, tempbuffer, ft_strlen(tempbuffer), ft_strlen(buffer));
+	free(tempbuffer);
 	return (output);
 }
-
+/*
 int     main(void)
 {
         char *ultimate_str;
@@ -58,12 +40,13 @@ int     main(void)
 
 	i = 0;
 	int fd = open("test.txt", O_RDONLY | O_CREAT);
-        while (i < 10)
+        while (i < 20)
         {
                 ultimate_str = get_next_line(fd);
-                printf("%s",ultimate_str);
-                free(ultimate_str);
+                printf("%s", ultimate_str);
+		free(ultimate_str);
 		i++;
         }
         return (0);
 }
+*/

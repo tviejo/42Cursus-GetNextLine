@@ -6,12 +6,12 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:50:56 by tviejo            #+#    #+#             */
-/*   Updated: 2024/04/05 22:32:20 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/04/06 11:42:53 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -19,12 +19,13 @@
 # include <errno.h>
 # include <fcntl.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 
-int	ft_strlen(char *str);
-char	*ft_strncpy(char *dest, char *scr, int n);
-char    *ft_remove_returned(char *buffer, int n);
+int		ft_strlen(char *str);
+char	*ft_strncpy(char *dest, char *scr, int n, int g);
+char	*ft_remove_returned(char *buffer, int n);
+int		get_first_line(char *buffer);
 
 #endif

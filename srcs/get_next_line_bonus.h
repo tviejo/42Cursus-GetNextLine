@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:50:56 by tviejo            #+#    #+#             */
-/*   Updated: 2024/04/06 15:12:58 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/04/10 09:46:15 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
 # endif
-
-typedef struct	s_list
-{
-	int	fd;
-	char	buffer[BUFFER_SIZE];
-	struct	s_list *prev;
-	struct	s_list *next;
-}	t_list;
 
 int		ft_strlen(char *str);
 char	*ft_strncpy(char *dest, char *scr, int n, int g);

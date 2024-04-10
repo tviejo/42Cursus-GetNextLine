@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:50:49 by tviejo            #+#    #+#             */
-/*   Updated: 2024/04/06 11:39:35 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/04/10 09:47:39 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*get_next_line(int fd)
 	char		*output;
 	char		nbbyte;
 
+	if (fd < 0 || fd > 1024)
+		return (NULL);
 	if (buffer[0] == '\0')
 		if (read(fd, buffer, BUFFER_SIZE) <= 0)
 			return (NULL);

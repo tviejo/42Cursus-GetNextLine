@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:50:27 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/19 19:42:14 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/21 22:01:54 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,40 @@ char	*ft_strncpy(char *dest, char *scr, int n)
 	int	i;
 
 	i = 0;
-	while (i < n && scr[i] != '\0')
+	if (scr != NULL && dest != NULL)
 	{
-		dest[i] = scr[i];
+		while (i < n && scr[i] != '\0')
+		{
+			dest[i] = scr[i];
+			i++;
+		}
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
 		i++;
 	}
-	dest[i] = '\0';
 	return (dest);
 }
 
-char	*ft_remove_returned(char *buffer, int n)
+void	ft_remove_returned(char *buffer)
 {
 	int		i;
-	char	*newbuffer;
+	int		n;
 
-	newbuffer = malloc(BUFFER_SIZE * sizeof(char));
-	if (newbuffer == NULL)
-		return (newbuffer);
+	n = get_first_line(buffer);
 	i = n;
 	while (buffer[i] != '\0')
 	{
-		newbuffer[i - n] = buffer[i];
+		buffer[i - n] = buffer[i];
 		i++;
 	}
-	newbuffer[i - n] = '\0';
-	return (newbuffer);
+	i = i - n;
+	while (i <= BUFFER_SIZE)
+	{
+		buffer[i] = '\0';
+		i++;
+	}
 }
 
 int	get_first_line(char *buffer)
@@ -62,11 +71,10 @@ int	get_first_line(char *buffer)
 
 	i = 0;
 	while (buffer[i] != '\0' && buffer[i] != '\n')
+	{
 		i++;
-	if (buffer[i] == '\n')
-		return (i + 1);
-	else
-		return (i);
+	}
+	return (i + 1);
 }
 
 int	ft_is_new_line(char *buffer)

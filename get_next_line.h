@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:50:56 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/19 18:31:37 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/21 22:36:21 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 char	*get_next_line(int fd);
 int		ft_strlen(char *str);
 char	*ft_strncpy(char *dest, char *scr, int n);
-char   	*ft_remove_returned(char *buffer, int n);
+void	ft_remove_returned(char *buffer);
 int		get_first_line(char *buffer);
 void	*ft_bzero(void *s, size_t n);
-int     ft_is_new_line(char *buffer);
+int		ft_is_new_line(char *buffer);
 
 #endif

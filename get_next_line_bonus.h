@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:50:56 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/19 17:42:51 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/21 22:48:55 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 #  define BUFFER_SIZE 1000
 # endif
 
+char	*get_next_line(int fd);
 int		ft_strlen(char *str);
 char	*ft_strncpy(char *dest, char *scr, int n);
-char	*ft_remove_returned(char *buffer, int n);
+void	ft_remove_returned(char *buffer);
 int		get_first_line(char *buffer);
-char	*get_next_line(int fd);
+void	*ft_bzero(void *s, size_t n);
+int		ft_is_new_line(char *buffer);
 
 #endif

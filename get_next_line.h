@@ -30,5 +30,8 @@ void	ft_remove_returned(char *buffer);
 int		get_first_line(char *buffer);
 void	*ft_bzero(void *s, size_t n);
 int		ft_is_new_line(char *buffer);
+char	*ft_remove_buffer(char *output);
+char	*ft_read(char *buffer, int fd);
+char	*ft_realloc(char *ptr, char *buffer, int n);
 
 #endif

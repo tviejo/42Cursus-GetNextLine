@@ -6,7 +6,7 @@
 /*   By: tviejo <tviejo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:50:56 by tviejo            #+#    #+#             */
-/*   Updated: 2024/05/21 22:48:55 by tviejo           ###   ########.fr       */
+/*   Updated: 2024/05/27 13:37:00 by tviejo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
+# elif BUFFER_SIZE < 0
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 0
 # endif
 
 char	*get_next_line(int fd);
